@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <ul id='nav' >
+        <li class='nav'><a class='nav' href="/flights">ALL FLIGHTS</a></li>
+        <li class='nav'><a class='nav' href="/flights/new">ADD FLIGHT</a></li>
+        <li class='nav'><a class='nav' href="/tickets/new">ADD TICKET</a></li>
+        <li class='nav'><a class='nav' href="/flights/filter">FILTER BY DEPARTURE DATE</a></li>
+      </ul>
+    <section id="show-page">
+        <div><b>FLIGHT DETAILS</b></div>
+        <div>AIRLINE: <i><%= flight.airline %></i></div>
+        <div>FLIGHT NUMBER: <i><%= flight.flightNo %></i></div>
+        <div>DEPARTURE TIME: <i><%= flight.departs %></i></div>
+        <div>AIRPORT: <i><%= flight.airport %></i></div>
+      </section>
+
+<!-- new markup below -->
+<br><br><h2>Destinations</h2>
+<form id="add-review-form" method="POST"
+    action="/flights/<%= flight._id %>/destinations">
+  <label>Departs: <input type="datetime-local" id="meeting-time"
+    name="departs" value=""
+    min="" max=""> </label><br />
+  <label
+    >Airport
+    <select name="airport">
+      <option value="AUS">AUSTIN</option>
+      <option value="DAL">DALLAS</option>
+      <option value="LAX">LOS ANGELES</option>
+      <option value="SEA">SEATTLE</option>
+    </select> </label
+  ><br />
+  <input type="submit" value="Add Destination" />
+</form>
+<% if (flight.destinations.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Destination Airport</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% flight.destinations.forEach(function(d) { %>
+      <tr>
+        <td><%= d.createdAt.toLocaleDateString() %></td>
+        <td><%= d.arrival %></td>
+        <td><%= d.airport %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% } else { %>
+  <h5>No Destinations Yet</h5>
+  <% } %>
+
+  <!-- new markup below -->
+  <br><br><h2>TICKETS</h2>
+  <form id="" action="/flights/<%= flight._id %>/tickets" method="POST"> 
+    <label>Seat:</label>
+    <input name="seat" required pattern="[A-F][1-99]\d?" placeholder="Rows:A-F Seats:1-99">
+    <label>Price:</label>
+    <input type="number" name="price">
+    <input type="submit" value="Add Ticket">
+  </form>
+  <% if (flight.ticket.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Seat</th>
+          <th>Price</th>
+          <th>Flight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% flight.ticket.forEach(function(t) { %>
+        <tr>
+          <!-- <td><%= t.createdAt.toLocaleDateString() %></td> -->
+          <td><%= t.seat %></td>
+          <td><%= t.price %></td>
+          <td><%= t.flight %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <% } else { %>
+    <h5>No Tickets Yet</h5>
+    <% } %>
+  <a href="/tickets/new">Buy Tickets!</a>
+
+  
+      
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <title><%= title %></title>
+</head>
+<body>
+    <ul id='nav' >
+        <li class='nav'><a class='nav' href="/flights">ALL FLIGHTS</a></li>
+        <li class='nav'><a class='nav' href="/flights/new">ADD FLIGHT</a></li>
+        <li class='nav'><a class='nav' href="/tickets/new">ADD TICKET</a></li>
+        <li class='nav'><a class='nav' href="/flights/filter">FILTER BY DEPARTURE DATE</a></li>
+      </ul>
+  <main>
+    <h1><%= title %></h1>
+
+<p>Please first ensure that the Ticket is not in the dropdown
+<select>
+<% tickets.forEach(function(t) { %>
+<option><%= t.name %></option>
+<% }) %>
+</select>
+</p>
+<form id="" action="/flights" method="POST"> 
+  <label>Seat:</label>
+  <input type="text" name="seat">
+  <label>Price:</label>
+  <input type="number" name="price">
+  <input type="submit" value="Add Ticket">
+</form>
+  </main>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Express To-Do</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head> 
+<body>
+    <ul id='nav' >
+        <li class='nav'><a class='nav' href="/flights">ALL FLIGHTS</a></li>
+        <li class='nav'><a class='nav' href="/flights/new">ADD FLIGHT</a></li>
+        <li class='nav'><a class='nav' href="/tickets/new">ADD TICKET</a></li>
+        <li class='nav'><a class='nav' href="/flights/filter">FILTER BY DEPARTURE DATE</a></li>
+      </ul>
+    <h1>FLIGHTS</h1>
+   <%flights.forEach(f => {%>
+<li class='list'>
+   <%=f.airline%>
+   <%=f.flightNo%>
+   <%=f.departs%> <a id='details' href="/flights/<%= f._id %>">DETAILS</a></td><form action="/flights/<%= f._id%>?_method=DELETE" method="POST" class="delete-form"><button type="submit">X</button></form>
+</li>
+   <%})%>
+</body>
+</html>
