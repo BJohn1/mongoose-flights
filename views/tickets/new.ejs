@@ -20,17 +20,18 @@
 <p>Please first ensure that the Ticket is not in the dropdown
 <select>
 <% tickets.forEach(function(t) { %>
-<option><%= t.name %></option>
+<option><%= t.seat %></option>
 <% }) %>
 </select>
 </p>
-<form id="" action="/flights" method="POST"> 
+<form id="add-performer-form" action="/tickets" method="POST"> 
   <label>Seat:</label>
-  <input type="text" name="seat">
+  <input name="seat" required pattern="[A-F][1-99]\d?" placeholder="Rows:A-F Seats:1-99">
   <label>Price:</label>
   <input type="number" name="price">
   <input type="submit" value="Add Ticket">
 </form>
+
   </main>
 </body>
 </html>

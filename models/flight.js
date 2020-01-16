@@ -22,7 +22,7 @@ const flightSchema = new Schema({
           type: Schema.Types.ObjectId,
           ref: 'Ticket',
         }
-      ]
+      ],
 },
 {
     timestamps: true
