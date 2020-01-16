@@ -23,7 +23,7 @@ li {
 
 .list{
   color: red;
-  background-color: teal;
+  
 }
 
 #nav {
@@ -58,5 +58,17 @@ form {
 
 button{
   color: red;
+}
+
+html, li, td{
+  animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+  0%{     color: red;    }
+  20%{    color: orange; }
+  40%{    color: yellow; }
+  60%{    color:green;  }
+  80%{   color: blue;    }
+  100%{   color: purple;    }
 }
 
