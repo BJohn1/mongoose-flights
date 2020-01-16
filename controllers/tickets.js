@@ -6,8 +6,8 @@ const newTicket = (req, res) => {
       if(flight.ticket.includes(req.body.ticketId)) {
         res.redirect(`/flights/${flight._id}`)
       } else {
+        flight.ticket.push(req.body.ticketId)
         flight.save(err => {
-            flight.ticket.push(req.body.ticketId)
             res.redirect(`/flights/${flight._id}`)
         })
       }
