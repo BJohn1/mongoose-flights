@@ -22,7 +22,6 @@ const create= (req, res) =>{
         else res.redirect('/flights')
         //console.log(err)
     })
-    console.log(req.body)
 } 
 
 
@@ -35,7 +34,6 @@ const index= (req, res) =>{
             res.render('flights/index',{
                 flights
             });
-            return console.log(flights)
         }
     })
 }
@@ -61,11 +59,23 @@ const show = (req, res) => {
         } 
         else{
             const sortedFlights = flights.sort((a, b) => (a.departs > b.departs) ? 1 : -1)
-            console.log(sortedFlights)
             res.render('flights/filter',{
                 flights: sortedFlights
             });
-            return console.log(flights)
+           
+        }
+    })
+}
+
+const deleteFlight = (req, res) =>{
+    Flight.findByIdAndDelete({_id:req.params.id}, (err,flight)=>{
+        console.log(flight)
+        if(err){
+            return res.redirect('/flights')
+        } 
+        else{
+            res.redirect('/flights');
+             
         }
     })
 }
@@ -75,5 +85,6 @@ module.exports = {
     create,
     filter,
     show,
-    index
+    index,
+    delete: deleteFlight,
 }

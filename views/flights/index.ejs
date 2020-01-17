@@ -20,7 +20,7 @@
    <%=f.airline%>
    <%=f.flightNo%>
    <%=f.departs%>
-   <%=f.airport%> <a id='details' href="/flights/<%= f._id %>">DETAILS</a></td><form action="/flights/<%= f._id%>?_method=DELETE" method="POST" class="delete-form"><button type="submit">X</button></form>
+   <%=f.airport%> <a id='details' href="/flights/<%= f._id %>">DETAILS</a></td><form action="/flights/<%= f._id %>?_method=DELETE" method="POST" class="delete-form"><button type="submit">X</button></form>
 </li>
    <%})%>
 </body>
